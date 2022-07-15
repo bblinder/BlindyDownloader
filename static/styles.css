@@ -1,0 +1,22 @@
+.my-warning {
+    color: rgb(255, 128, 0);
+}
+
+.my-border-warning {
+    border-color: rgb(255, 128, 0) !important;
+}
+
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:visited {
+    background-color: rgba(255, 98, 0, 0.918) !important;
+    border-color: rgb(255, 255, 255) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+
+body {
+    transition: all 1s;
+}
