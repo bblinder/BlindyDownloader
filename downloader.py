@@ -14,18 +14,21 @@ def FilterData(ctx):
 
     for v in videosFormat:
         a = dict()
-        a["filesize"] = v["filesize"] if v["filesize"]!="none" else v["filesize_approx"]
+        a["filesize"] = v["filesize"] if v["filesize"]!=None else v["filesize_approx"]
+        a['filesize'] = str(round((int(a['filesize'])/1024/1024),1)) + "MB"
         a["url"] = v["url"]
-        a["resolution"] = v["resolution"]
+        a["resolution"] = v["resolution"].split("x")[1]
         a["ext"] = v["ext"]
         videosFormatFiltered.append(a)
 
     for v in audiosFormat:
         a = dict()
-        a["filesize"] = v["filesize"] if v["filesize"]!="none" else v["filesize_approx"]
+        a["filesize"] = v["filesize"] if v["filesize"]!=None else v["filesize_approx"]
+        a['filesize'] = str(round((int(a['filesize'])/1024/1024),1)) + "MB"
         a["url"] = v["url"]
         a["ext"] = v["ext"]
         a["abr"] = v["abr"]
+        a["abr"] = str(int(a["abr"])) + "Kbps"
         audiosFormatFiltered.append(a)
 
     return {

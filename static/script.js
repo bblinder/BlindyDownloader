@@ -47,25 +47,28 @@ function SendReq() {
         xhr.onload = function () {
             document.getElementById(_afterBefore).getElementsByClassName("spiner")[0].style.display = "none";
             document.getElementById(_afterBefore).getElementsByTagName("button")[0].style.display = "block";
-            // document.getElementById("cards").firstElementChild.style.display = "block";
             if (_afterBefore == "before") SwitchOptions("after");
             console.log(xhr.response);
-            //     document.getElementById("noresult").style.display = "none";
-            //     searchButton.style.display = "block";
-            //     spinner.style.display = "none";
+
             if (xhr.status != 200) {
                 alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
                 document.getElementById("noresult").style.display = "block";
             } else {
+
+
+
+
                 video = xhr.response;
-                //         x = repos;
                 var cardParent = document.getElementById("cards");
                 var card = document.getElementsByClassName("card")[0];
-                //         card.style.display = "none";
-
-                //         // Add new cards
-                //         for (var repo in repos) {
                 var clone = card.cloneNode(true);
+
+                //clear the cards
+                let cardsCount = cardParent.children.length;
+                for (let i = 1; i < cardsCount; i++) {
+                    cardParent.children[1].remove();
+                }
+
                 clone.style.display = "block";
                 clone.getElementsByClassName("title")[0].innerHTML = video["title"];
                 clone.getElementsByClassName("thumbnail0")[0].src = video["thumbnail"];
@@ -77,7 +80,7 @@ function SendReq() {
                     var v = videoButton.cloneNode(true);
                     v.style.setProperty("display", "inline-block", "important");
                     v.setAttribute("href", video["videos"][i]["url"] + "&title=%D8%A7%D9%84%D9%81%D9%8A%D9%84%D9%85%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%20%7C%7C%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B9%D8%B1");
-                    v.innerHTML = video["videos"][i]["ext"] + " " + video["videos"][i]["resolution"] + " " + video["videos"][i]["filesize"];
+                    v.innerHTML = video["videos"][i]["ext"] + "  " + video["videos"][i]["resolution"] + "  " + video["videos"][i]["filesize"];
                     videosParent.appendChild(v);
                 }
 
@@ -88,23 +91,11 @@ function SendReq() {
                     var a = audioButton.cloneNode(true);
                     a.style.setProperty("display", "inline-block", "important");
                     a.setAttribute("href", video["audios"][i]["url"]);
-                    a.innerHTML = video["audios"][i]["ext"] + " " + video["audios"][i]["abr"] + " " + video["audios"][i]["filesize"];
+                    a.innerHTML = video["audios"][i]["ext"] + "  " + video["audios"][i]["abr"] + "  " + video["audios"][i]["filesize"];
                     audiosParent.appendChild(a);
                 }
-                //             clone.getElementsByClassName("created_at")[0].innerHTML = repos[repo]["createdAt"].substring(0, 10);
-                //             clone.getElementsByClassName("pushed_at")[0].innerHTML = repos[repo]["pushedAt"].substring(0, 10);
-                //             clone.getElementsByClassName("updated_at")[0].innerHTML = repos[repo]["updatedAt"].substring(0, 10);
-                //             clone.getElementsByClassName("watchers")[0].innerHTML = repos[repo]["watchers"]["totalCount"];
-                //             clone.getElementsByClassName("stars")[0].innerHTML = repos[repo]["stargazerCount"];
-                //             clone.getElementsByClassName("forks")[0].innerHTML = repos[repo]["forkCount"];
-                //             clone.getElementsByClassName("issues")[0].innerHTML = repos[repo]["issues"]["totalCount"];
                 cardParent.appendChild(clone);
-                //         }
 
-                //         FilterAll();
-                //         OrderBy();
-                //     }
-                // }
             }
         }
     }
