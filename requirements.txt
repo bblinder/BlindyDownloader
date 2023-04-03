@@ -1,0 +1,7 @@
+Flask
+Werkzeug
+yt-dlp
+gunicorn
+Jinja2
+validators
+requests
