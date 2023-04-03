@@ -79,7 +79,7 @@ function SendReq() {
                 for (let i = 0; i < video["videos"].length; i++) {
                     var v = videoButton.cloneNode(true);
                     v.style.setProperty("display", "inline-block", "important");
-                    v.setAttribute("href", video["videos"][i]["url"] + "&title=%D8%A7%D9%84%D9%81%D9%8A%D9%84%D9%85%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%20%7C%7C%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D8%B9%D8%B1");
+                    v.setAttribute("href", video["videos"][i]["url"] + "&title=" + encodeURIComponent(video["title"]));
                     v.innerHTML = video["videos"][i]["ext"] + "  " + video["videos"][i]["resolution"] + "  " + video["videos"][i]["filesize"];
                     videosParent.appendChild(v);
                 }
@@ -125,5 +125,5 @@ function changediframe(val) {
     console.log(val);
     console.log("changediframe");
     var diframe = document.getElementById("diframe");
-    diframe.src = "https://rr2---sn-oxfgv1-xcal.googlevideo.com/videoplayback?expire=1657642837&ei=9ErNYtOrPI-D-gbEhJnACg&ip=130.193.232.27&id=o-AEDsSLpJd16y0nNkmCKjhfms1N6Sz8Sss_ICFxpGYyCw&itag=22&source=youtube&requiressl=yes&mh=rK&mm=31%2C29&mn=sn-oxfgv1-xcal%2Csn-nv47lnl7&ms=au%2Crdu&mv=m&mvi=2&pl=21&initcwndbps=317500&vprv=1&mime=video%2Fmp4&cnr=14&ratebypass=yes&dur=768.255&lmt=1595589844889193&mt=1657620787&fvip=1&fexp=24001373%2C24007246&c=ANDROID&txp=5432432&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIgasIpfzIkTJn7ZPb6FfzURjpkJ0S6inro7rU9XklV33sCIQD-pZtjwFEyfceej86ylosel4_hXzuCgENXXnR853DEwQ%3D%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRgIhALwmDmvfA_v_XDRAk4v63k36zMsVforFy1-zqbiRfot9AiEAkcgq6ZfyqG-bjAAzEkNo0gc6PcOtwdOZ5fA95pXCjK0%3D";
+    diframe.src = val;
 }
